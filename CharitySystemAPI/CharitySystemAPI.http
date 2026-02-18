@@ -1,0 +1,51 @@
+@CharitySystemAPI_HostAddress = http://localhost:5282
+
+@admin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyIiwidW5pcXVlX25hbWUiOiJhZG1pbiIsInJvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL21vYmlsZXBob25lIjoiMDUwMDAwMDAwMCIsIm5iZiI6MTc2ODk5MjUwMSwiZXhwIjoxNzY5NTk3MzAxLCJpYXQiOjE3Njg5OTI1MDEsImlzcyI6IkNoYXJpdHlTeXN0ZW1BUEkiLCJhdWQiOiJDaGFyaXR5U3lzdGVtVXNlcnMifQ.5-uY2LyASdLHwVPVc3MjccrL3OWnshuJ7mTi8941lnc
+@whmanager = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwidW5pcXVlX25hbWUiOiJ3aG1hbmFnZXIiLCJyb2xlIjoiV2FyZWhvdXNlTWFuYWdlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL21vYmlsZXBob25lIjoiMDUxMTExMTExMSIsIm5iZiI6MTc2NzcyNTIwOSwiZXhwIjoxNzY4MzMwMDA5LCJpYXQiOjE3Njc3MjUyMDksImlzcyI6IkNoYXJpdHlTeXN0ZW1BUEkiLCJhdWQiOiJDaGFyaXR5U3lzdGVtVXNlcnMifQ.0VgUIAogeZGRxljp30NlMD5MonjWXmMOZD89I0cnUSM
+
+### (Login)
+POST {{CharitySystemAPI_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin$8098"
+}
+
+### (GET)
+GET {{CharitySystemAPI_HostAddress}}/api/clothes
+Accept: application/json
+Authorization: Bearer {{admin}}
+
+### (POST)
+POST {{CharitySystemAPI_HostAddress}}/api/clothes
+Content-Type: application/json
+Authorization: Bearer {{admin}}
+
+{
+  "clothName": "ﬁ„Ì’ ﬁÿ‰Ì —Ã«·Ì",
+  "clothCode": "MEN-SHT-001",
+  "clothSize": "XL",
+  "description": "ﬁ„Ì’ ’Ì›Ì „—ÌÕ",
+  "category": 0,
+  "quantity": 50,
+  "clothPoints": 10,
+  "imageUrl": "http://example.com/image.jpg"
+}
+
+
+### ≈‰‘«¡ ÿ·» ÃœÌœ (”·… «·„·«»”) 
+POST {{CharitySystemAPI_HostAddress}}/api/orders
+Content-Type: application/json
+Authorization: Bearer {{admin}}
+
+{
+  "shippingAddress": "œ„‘ﬁ - —ﬂ‰ «·œÌ‰ - ‘«—⁄ ’·«Õ «·œÌ‰",
+  "isPermanentAddress": false,
+  "items": [
+    {
+      "clothId": 1, 
+      "quantity": 1500
+    }
+  ]
+}
